@@ -1,0 +1,49 @@
+//spacecraft: 
+// FM1 mass is 601.214, FM2 mass is 601.209, mass at launch
+// These information is from GRACE-FO L1 data product user handbook, the coordinate frame is not clear !!!
+{
+spacecraftName: GRACE-FO
+// componentName, n.x, n.y, n.z, area, thickness, reflectivity, specularity,emissivity
+components: 6
+busX+: 1.0    0.0    0.0    0.9552   0.0    0.660 0.515 0.62
+busX-: -1.0   0.0    0.0    0.9552   0.0    0.660 0.515 0.62
+panel-1:  0.0   0.766044 -0.642787 3.15547 0.0 0.35 0.1428 0.81
+panel-2:  0.0  -0.766044  0.642787 3.15547 0.0 0.35 0.1428 0.81
+nadir: 0.0    0.0    1.0    6.0711   0.0    0.880 0.773 0.75
+panel-3: 0.0    0.0   -1.0    2.1674   0.0    0.35 0.1428 0.81
+sphere: 2.0  0.3 0.88
+BFSbias: 0.0 0.0 -15.0
+srp_gridX: /mnt/d/project/ncf/config/srp_gridfile/GRACE-FO/xgrid_GRACE-FO_srp.grd
+srp_gridY: /mnt/d/project/ncf/config/srp_gridfile/GRACE-FO/ygrid_GRACE-FO_srp.grd
+srp_gridZ: /mnt/d/project/ncf/config/srp_gridfile/GRACE-FO/zgrid_GRACE-FO_srp.grd
+erp_gridX: /mnt/d/project/ncf/config/erp_gridfile/GRACE-FO/xgrid_GRACE-FO_erp.grd
+erp_gridY: /mnt/d/project/ncf/config/erp_gridfile/GRACE-FO/ygrid_GRACE-FO_erp.grd
+erp_gridZ: /mnt/d/project/ncf/config/erp_gridfile/GRACE-FO/zgrid_GRACE-FO_erp.grd
+drag_gridX: /mnt/d/project/ncf/config/drag_gridfile/GRACE-FO/xgrid_GRACE-FO_drag.grd
+drag_gridY: /mnt/d/project/ncf/config/drag_gridfile/GRACE-FO/ygrid_GRACE-FO_drag.grd
+drag_gridZ: /mnt/d/project/ncf/config/drag_gridfile/GRACE-FO/zgrid_GRACE-FO_drag.grd
+}
+
+{
+spacecraftName: TH-04
+// componentName, n.x, n.y, n.z, area, thickness, reflectivity, specularity,emissivity
+components: 6
+busX+: 1.0    0.0    0.0    0.9552   0.0    0.660 0.515 0.62
+busX-: -1.0   0.0    0.0    0.9552   0.0    0.660 0.515 0.62
+panel-1:  0.0   0.766044 -0.642787 3.15547 0.0 0.35 0.1428 0.81
+panel-2:  0.0  -0.766044  0.642787 3.15547 0.0 0.35 0.1428 0.81
+nadir: 0.0    0.0    1.0    6.0711   0.0    0.880 0.773 0.75
+panel-3: 0.0    0.0   -1.0    2.1674   0.0    0.35 0.1428 0.81
+sphere: 2.0  0.3 0.88
+BFSbias: 0.0 0.0 -15.0
+srp_gridX: /mnt/d/project/ncf/config/srp_gridfile/TH04/xgrid_TH-04_srp.grd
+srp_gridY: /mnt/d/project/ncf/config/srp_gridfile/TH04/ygrid_TH-04_srp.grd
+srp_gridZ: /mnt/d/project/ncf/config/srp_gridfile/TH04/zgrid_TH-04_srp.grd
+erp_gridX: /mnt/d/project/ncf/config/erp_gridfile/TH04/xgrid_TH-04_erp.grd
+erp_gridY: /mnt/d/project/ncf/config/erp_gridfile/TH04/ygrid_TH-04_erp.grd
+erp_gridZ: /mnt/d/project/ncf/config/erp_gridfile/TH04/zgrid_TH-04_erp.grd
+drag_gridX: /mnt/d/project/ncf/config/drag_gridfile/TH04/xgrid_TH-04_drag.grd
+drag_gridY: /mnt/d/project/ncf/config/drag_gridfile/TH04/ygrid_TH-04_drag.grd
+drag_gridZ: /mnt/d/project/ncf/config/drag_gridfile/TH04/zgrid_TH-04_drag.grd
+}
+

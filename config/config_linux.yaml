@@ -1,0 +1,71 @@
+SOI:
+  directories:
+    dataset directory: "/mnt/e/项目/基于非保守力特征的空间目标识别/原始数据库/SpaceObjects"  # Norad数据库路径
+    process data directory: "/mnt/e/项目/基于非保守力特征的空间目标识别/数据集/过程"     # ncf计算过程数据输出路径
+    output directory: "/mnt/e/Program/Pycharm2022/projects/SOI-NCF_v1/output"       # 数据输出路径
+    conservative force model directory: "/mnt/d/project/ncf"                        # 保守力模型路径
+
+  parameters:
+    time_reference: "1990-01-01T00:00:00.000000"                                    # 参考时间起点
+    epoch_start: "1990-01-01T00:00:00.000000"                                       # GP数据库中采样开始时间
+    epoch_end: "2023-01-01T00:00:00.000000"                                         # GP数据库中采样结束时间
+    sample_interval: 1                                                              # GP数据库中采样间隔，单位：天
+    orbit_interval: 60                                                               # 推算轨道的时间间隔，单位：秒
+    predict_period: 5                                                               # 轨道预报时间长度，单位：个（运行周期）
+    epoch_eop_start: "1992-01-01T00:00:00.000000"                                   # EOP文件中开始时间
+    num_diff_win_size: 11                                                           # 数值微分窗口长度
+
+  formats:
+    time utc in input and output: "%Y-%m-%dT%H:%M:%S.%f"                            # 程序运行过程中非数值时间的格式
+    time utc in filename: "%Y%m%dT%H%M%S"                                           # 文件名中时间的输出格式
+
+    orbit_suffix: '-Orbit'
+    differentiation_suffix: '-LagDiff'
+    gfm_suffix: '-GFM'
+    conservative_force_suffix: '-CF'
+    non_conservative_force_suffix: '-NCF'
+
+  objects:
+    ids: all
+
+  features:
+    gp features:
+      - EPOCH  # 平均开普勒根数的历元。
+      - MEAN_MOTION  # 开普勒平均运动（以日转周数计）。
+      - ECCENTRICITY  # 偏心率。
+      - INCLINATION  # 轨道倾角，单位  #度。
+      - RA_OF_ASC_NODE  # 升交点赤经，单位  #度。斜率+相位
+      - ARG_OF_PERICENTER  # 近地点幅角，单位  #度。
+      - MEAN_ANOMALY  # 平近点角，单位  #度。
+      - REV_AT_EPOCH  # 在历元时刻的运行周数。
+      - BSTAR  # 辐射压系数  #航天器单位面积在单位时间上受到的辐射压力，单位地球半径倒数。随时间波动明显！
+      - MEAN_MOTION_DOT  # 平动一阶导，几乎都为0！
+      - MEAN_MOTION_DDOT  # 平动二阶导，几乎每个物体都为0！
+      - SEMIMAJOR_AXIS  # 半长轴，以千米为单位。
+      - PERIOD  # 运动周期，单位  #分钟。
+      - APOAPSIS  # 空间目标在运动轨道上的远地点高度，单位  #千米。
+      - PERIAPSIS  # 空间目标在运动轨道上的近地点高度，单位  #千米。
+
+      - TLE_LINE0  # 包含空间目标的名称或标识符，通常以国际字母数字代码表示。用于标识TLE数据属于哪个空间目标。
+      - TLE_LINE1  # 包含空间目标的一些轨道参数，如NORAD目录编号、发射年份的后两位、发射当年的天数、辐射压系数等信息。
+      - TLE_LINE2  # 包含空间目标的更多轨道参数，如所在轨道平面的倾角、升交点赤经、近地点角度等轨道详细信息。
+
+      - OBJECT_TYPE  # 空间目标类型，可选PAYLOAD、ROCKET BODY、DEBRIS、UNKNOWN、OTHER。PAYLOAD表示有效载荷，ROCKET BODY表示火箭残骸，DEBRIS表示空间碎片，UNKNOWN表示目标未知，OTHER表示其他。
+      - RCS_SIZE  # 在所有可能的视角上采样空间物体的典型(第50百分位)有效雷达横截面积，单位为m2。按照有效雷达横截面积大小划分等级  #小于0.1 m2，记为SMALL；大于0.1 m2，但小于1.0 m2，记为MEDIUM；大于1.0 m2，记为LARGE。
+      - NORAD_CAT_ID  # norad编号
+
+      - ncf_square_time_average  # ncf平方后的时间平均，包含xyz三个方向分量，以（nm/s^2）^2为单位。
+      - ncf_spectrum_freq_peak  # ncf频谱中的峰值及对应的频率，包含xyz三个方向分量，形式：{'频率'：值，'峰值'：值}。
+
+  labels:  # 3*object_type+rcs
+    object_type:
+      - PAYLOAD
+      - ROCKET BODY
+      - DEBRIS
+    rcs_size:
+      - SMALL
+      - MEDIUM
+      - LARGE
+
+
+
